@@ -1,123 +1,72 @@
-# MASC - Menswear Collection 3D E-Commerce
+# ELEGANCE — Premium Menswear
 
-A premium 3D e-commerce website for menswear with interactive Three.js product visualization.
+A luxury menswear e-commerce demo with immersive Three.js 3D product previews, Swiper carousels, and a six-category catalog.
 
-## Features
+## Stack
 
-- ✨ Interactive 3D product viewer with drag-to-rotate controls
-- 🎨 4 product categories: Casual, Formal, Sport, Accessories
-- 👕 50+ products with colors, sizes, and pricing
-- 📱 Fully responsive design
-- 🎯 Smooth navigation: Home → Category → Section → Product details
-- 🛒 Shopping cart counter
-- ⚡ Built with React + Three.js + Vite
+- **React 18** + **Vite**
+- **Three.js** — procedural 3D clothing models
+- **Swiper** — featured & section carousels
+- **Framer Motion** — premium page animations
+- **React Router** — multi-page navigation
+
+## Quick Start
+
+```bash
+npm install
+npm run dev
+```
+
+Opens at [http://localhost:3000](http://localhost:3000)
 
 ## Project Structure
 
 ```
-CLIENT_WEBSITES/
-├── src/
-│   ├── App.jsx          # Main application component
-│   └── main.jsx         # React entry point
-├── index.html           # HTML template
-├── package.json         # Dependencies
-├── vite.config.js       # Vite configuration
-└── README.md           # This file
+src/
+├── components/       # UI, 3D viewer, layout
+├── context/          # Shopping cart state
+├── data/catalog.js   # All categories & products
+├── pages/            # Home, Category, Product, Contact
+├── styles/global.css
+└── utils/            # 3D builder, SVG thumbnails, formatters
+public/
+└── images/           # Drop real product photos here (see below)
 ```
 
-## Quick Start
+## Categories
 
-### Prerequisites
-- Node.js (v14 or higher)
-- npm or yarn
+1. **Formal** — Korean pants, trousers, shirts, and more
+2. **Casual** — Jeans, tees, baggy pants, printed shirts
+3. **Sports** — Compression wear, training gear, sport watches
+4. **Accessories** — Belts, ties, watches, jewelry, perfumes
+5. **Inner Ornament** — Underwear, thermals, base layers
+6. **Footwear** — Formal, casual, sneakers, boots, sandals
 
-### Installation
+## Routes
 
-1. **Install dependencies:**
-```bash
-npm install
+| Path | Page |
+|------|------|
+| `/` | Home with featured carousel |
+| `/shop/:categoryId` | Category with section grids |
+| `/shop/:categoryId/:productId` | Product detail + 3D viewer |
+| `/contact` | Contact & newsletter |
+
+## Replacing Placeholders with Real Images
+
+Add photos under:
+
+```
+public/images/{categoryId}/{productId}/hero.jpg
+public/images/{categoryId}/{productId}/gallery-01.jpg
 ```
 
-2. **Start development server:**
-```bash
-npm run dev
-```
+Then reference in `src/data/catalog.js` with an `images` array on each product.
 
-The app will open automatically at `http://localhost:3000`
-
-### Build for Production
+## Build
 
 ```bash
 npm run build
-```
-
-Output will be in the `dist/` folder.
-
-### Preview Production Build
-
-```bash
 npm run preview
 ```
 
-## How to Use
-
-1. **Home Page** - Click any category button to explore
-2. **Category Page** - Select a section (e.g., Chinos, T-Shirts)
-3. **Product Page** - View 3D model with:
-   - **Left sidebar**: Browse all products
-   - **Center**: Drag to rotate the 3D model 360°
-   - **Right panel**: Select size, check availability, add to cart
-4. **Navigation**: Use breadcrumb at top to navigate back
-
-## Technologies
-
-- **React 18** - UI framework
-- **Three.js** - 3D graphics
-- **Vite** - Modern build tool
-- **CSS-in-JS** - Inline styling
-- **Google Fonts** - Cormorant Garamond & Montserrat
-
-## Customization
-
-### Edit Products
-Modify the `CATS` object in `src/App.jsx` to change:
-- Product names, prices, colors
-- Stock levels
-- Descriptions
-- Sizes available
-
-### Change Colors & Styling
-All styling is inline in components. Look for `style={{}}` props to customize:
-- Theme colors (golds, grays)
-- Font sizes
-- Spacing & layouts
-
-### Modify 3D Models
-Edit the `buildModel()` function in `src/App.jsx` to:
-- Change clothing geometry
-- Add new item types
-- Adjust lighting
-
-## Performance Notes
-
-- 3D models are generated procedurally (no heavy file downloads)
-- Each product instantiates a fresh Three.js scene for isolation
-- Proper cleanup on unmount prevents memory leaks
-- Optimized for both desktop and touch devices
-
-## Browser Support
-
-- Chrome 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
-
-WebGL required for 3D rendering.
-
-## License
-
 Private project for ENOMOTIA.
-
----
-
-Built with ❤️ for premium menswear shopping.
